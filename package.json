@@ -1,0 +1,23 @@
+{
+  "name": "settings-bill-expressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "exphbs": "^1.2.0",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "moment": "^2.22.2"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}

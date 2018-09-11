@@ -73,8 +73,7 @@ module.exports = function NamesGreeted(pool) {
   }
 
   async function clearBtn() {
-    let clear = await pool.query("DELETE FROM greet");
-    return clear.rows[0];
+    await pool.query("DELETE FROM greet");
   }
 
   return {

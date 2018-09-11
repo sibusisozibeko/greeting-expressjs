@@ -67,6 +67,11 @@ app.get("/greeted", async function(req, res) {
   res.render("greetings", { greeted });
 });
 
+app.get("/reset", async function(req, res) {
+  await Greet.clearBtn();
+  res.redirect("/");
+});
+
 app.get("/greeted/:username", async function(req, res) {
   let greeted = await Greet.returnName();
   let message = await Greet.Greetfunctions(req.params.username);

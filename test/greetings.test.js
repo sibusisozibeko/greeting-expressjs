@@ -1,52 +1,82 @@
-let assert = require("assert");
-let NamesGreeted = require("../greet");
-describe('The namesGreeted function', function(){
+const assert = require("assert");
+const NamesGreeted = require("../greet");
+const pg = require("pg");
+const Pool = pg.Pool;
 
-    it('must show that a person is greeted in IsiXhosa ', function(){
-      var greeted = NamesGreeted();
-      assert.equal("Molo, Sbu", greeted.greets("IsiXhosa", "Sbu"));
-    });
+// we are using a special test database for the tests
+const connectionString =
+  process.env.DATABASE_URL ||
+  "postgresql://coder:coder123@localhost:5432/greetings";
+const pool = new Pool({
+  connectionString
+});
 
-    it('must show that a person is greeted in English  ', function(){
-      var greeted = NamesGreeted();
-      assert.equal("Hello, Leon", greeted.greets("English", "Leon"));
-    });
+let greeted = NamesGreeted(pool);
 
-    it('must show that a person is greeted in Afrikaans ', function(){
-      var greeted = NamesGreeted();
-      assert.equal("Hallo, Rochelle", greeted.greets("Afrikaans", "Rochelle"));
-    });
+describe("The namesGreeted function", function() {
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
 
+  it("must show that a person is greeted in IsiXhosa ", async function() {
+    // var greeted = NamesGreeted(pool);
+    let greeting = await greeted.greetedNames("IsiXhosa", "Sbu");
+    assert.equal(greeting, "Molo, Sbu");
+  });
 
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
 
-        it('must count the number of names greeted and I expect three people to be greeted ', function(){
-          var greeted = NamesGreeted();
-          greeted.greets("IsiXhosa", "Sbu");
-          greeted.greets("IsiXhosa", "Ace");
-          greeted.greets("IsiXhosa", "Ace");
-          greeted.greets("IsiXhosa", "Akhona");
+  it("must show that a person is greeted in English  ", async function() {
+    // var greeted = NamesGreeted(pool);
+    let greeting = await greeted.greetedNames("English", "Leon");
+    assert.equal(greeting, "Hello, Leon");
+  });
 
-          assert.equal(3,  greeted.counts());
-        });
-        it('must count the number of names greeted and I expect two people to be greeted', function(){
-          var greeted = NamesGreeted();
-          greeted.greets("English", "sbu");
-          greeted.greets("English", "lilo");
-          greeted.greets("English", "lilo");
-          greeted.greets("English", "lilo");
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
 
-          assert.equal(2,  greeted.counts());
-        });
+  it("must show that a person is greeted in Afrikaans ", async function() {
+    // var greeted = NamesGreeted(pool);
+    let greeting = await greeted.greetedNames("Afrikaans", "Rochelle");
+    assert.equal(greeting, "Hallo, Rochelle");
+  });
 
-it('must test a factory function when it is called with a Map of names', function(){
-        var namesGreeted = NamesGreeted(({"sbu" : 0, "lilo" : 0}));
-        assert.deepEqual(({"sbu" : 0, "lilo" : 0}),  namesGreeted.getGreetingNames());
-        });
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
 
-        it('must test when two names are greeted and expect them to appear on the Map  ', function(){
-        var namesGreeted = NamesGreeted(({"sbu" : 0, "lilo" : 0}))
-        namesGreeted.greets("English", "Aya");
-        namesGreeted.greets("English", "Siyo");
-         assert.deepEqual(({ "sbu": 0, "lilo": 0, "Aya": 0, "Siyo": 0 }),  namesGreeted.getGreetingNames());
-                });
+  it("must count the number of names greeted and I expect three people to be greeted ", async function() {
+    // let greeting = await greeted.greetedNames();
+    await greeted.greetedNames("IsiXhosa", "Ace");
+    await greeted.greetedNames("IsiXhosa", "Lilo");
+    await greeted.greetedNames("IsiXhosa", "Vuyo");
+
+    assert.equal(3, await greeted.countNames());
+  });
+
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
+
+  it("must count the number of names greeted and I expect two people to be greeted", async function() {
+    //var greeted = NamesGreeted(pool);
+    await greeted.greetedNames("English", "sbu");
+    await greeted.greetedNames("English", "lilo");
+    await greeted.greetedNames("English", "lilo");
+    await greeted.greetedNames("English", "lilo");
+
+    assert.equal(2, await greeted.countNames());
+  });
+
+  after(function() {
+    pool.end();
+  });
 });

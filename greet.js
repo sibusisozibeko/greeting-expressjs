@@ -52,8 +52,8 @@ module.exports = function NamesGreeted(pool) {
       if (found.rows === []) {
       } else {
         let count = found.rows[0].greet_count;
-        let lang = found.rows[0].language;
-        let message = `Hello ${username} has been greeted in ${lang} ${count} time(s)`;
+        //let lang = found.rows[0].language;
+        let message = `Hello ${username} has been greeted ${count} time(s)`;
         console.log(message);
 
         return message;
@@ -75,7 +75,7 @@ module.exports = function NamesGreeted(pool) {
   async function countNames() {
     try {
       let count = await pool.query("SELECT COUNT (username) FROM greet");
-      console.log(count.rows[0].count);
+      // console.log(count.rows[0].count);
       return count.rows[0].count;
     } catch (err) {}
   }

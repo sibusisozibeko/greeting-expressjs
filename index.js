@@ -2,11 +2,24 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const NamesGreeted = require("./greet.js");
+const flash = require("express-flash");
+const session = require("express-session");
 const app = express();
 
 const pg = require("pg");
 const Pool = pg.Pool;
 
+// initialise session middleware - flash-express depends on it
+app.use(
+  session({
+    secret: "<add a secret string here>",
+    resave: false,
+    saveUninitialized: true
+  })
+);
+
+// initialise the flash middleware
+app.use(flash());
 // should we use a SSL connection
 let useSSL = false;
 let local = process.env.LOCAL || false;
@@ -76,6 +89,10 @@ app.get("/greeted/:username", async function(req, res) {
   let greeted = await Greet.returnName();
   let message = await Greet.Greetfunctions(req.params.username);
   res.render("greetings", { greeted, message });
+});
+
+app.get("/home", async function(req, res) {
+  res.redirect("/");
 });
 
 app.listen(PORT, function(err) {

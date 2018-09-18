@@ -1,67 +1,69 @@
-
-.count{
+.count {
   color: red;
-
 }
-body{
+body {
   background-color: lightblue;
   align-items: center;
   height: 100%;
   width: 100%;
-/* margin-left: 450px;*/
+  /* margin-left: 450px;*/
   font-size: 200%;
 }
 label {
-    display:inline-block;
+  display: inline-block;
 
-      /* for IE7*/
-                /* for IE7*/
+  /* for IE7*/
+  /* for IE7*/
 
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
-btnGreet{
-width: 100px;
-height: 30px;
-background-color: green;
-color: aliceblue;
-margin: 10px;
-
+btnGreet {
+  width: 100px;
+  height: 30px;
+  background-color: green;
+  color: aliceblue;
+  margin: 10px;
 }
 
-Reseting{
+Reseting {
   width: 100px;
   height: 30px;
   background-color: green;
   color: aliceblue;
   margin: 10px;
   /*align-items: center;*/
-
-
 }
-
+Shownames {
+  width: 100px;
+  height: 30px;
+  background-color: green;
+  color: aliceblue;
+  margin: 10px;
+  /*align-items: center;*/
+}
 
 .textareas {
   padding-top: 20px;
   width: 300px;
   height: 70px;
-/*padding-left: 500px;*/
+  /*padding-left: 500px;*/
 }
 
 .radios {
   padding-left: 20px;
 
   margin-left: auto;
-    margin-right: auto;
-    display :inline-block;
+  margin-right: auto;
+  display: inline-block;
 }
 
-@media(max-width: 400px) {
-  .h1{
+@media (max-width: 400px) {
+  .h1 {
     width: 100%;
     font-size: 16px;
-}
-  .textareas{
+  }
+  .textareas {
     width: 100%;
     font-size: 16px;
   }

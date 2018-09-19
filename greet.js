@@ -49,6 +49,7 @@ module.exports = function NamesGreeted(pool) {
       let found = await pool.query("SELECT * FROM greet WHERE username=$1", [
         username
       ]);
+
       if (found.rows === []) {
       } else {
         let count = found.rows[0].greet_count;

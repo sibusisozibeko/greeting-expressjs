@@ -60,7 +60,6 @@ describe("The namesGreeted function", function() {
 
     assert.equal(3, await greeted.countNames());
   });
-
   beforeEach(async function() {
     // clean the tables before each test run
     await pool.query("delete from greet;");

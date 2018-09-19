@@ -9,15 +9,6 @@ const app = express();
 const pg = require("pg");
 const Pool = pg.Pool;
 
-// initialise session middleware - flash-express depends on it
-app.use(
-  session({
-    secret: "<add a secret string here>",
-    resave: false,
-    saveUninitialized: true
-  })
-);
-
 // initialise the flash middleware
 app.use(flash());
 // should we use a SSL connection
@@ -47,6 +38,15 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+// initialise session middleware - flash-express depends on it
+app.use(
+  session({
+    secret: "this is a text",
+    resave: false,
+    saveUninitialized: true
+  })
+);
+
 app.use(express.static("public"));
 
 app.use(
@@ -66,6 +66,12 @@ app.get("/", async function(req, res) {
 app.post("/greetings", async function(req, res) {
   let textarea = req.body.myTextarea;
   let radio = req.body.radioz;
+
+  if (textarea == "") {
+    req.flash("error", "please enter name!");
+  } else if (radio == undefined) {
+    req.flash("error", "please select a button!");
+  }
   let greet = await Greet.greetedNames(radio, textarea);
   let count = await Greet.countNames();
 

@@ -88,6 +88,7 @@ module.exports = function NamesGreeted(pool) {
 
   return {
     //  getGreetingNames,
+
     greetedNames,
     clearBtn,
     //  namesGreeted,

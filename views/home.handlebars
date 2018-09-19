@@ -4,6 +4,7 @@
   <div class="row">
     <div class="count "><span>counter: {{count}}</span></div>
 
+
     <form class="" action="greetings" method="post">
 
       <div class="textareas" name="">
@@ -26,14 +27,16 @@
     </form>
 
 
-    <div class="button1 ">
-      <a href="/reset"><button onclick="" class="Reseting button button-primary">Reset</button></a>
-    </div>
     <div class="button1">
-      <a href="/greeted" class="Shownames button-primary"><button>Names</button></a>
+      <a href="/greeted"><button onclick="" class="Shownames button button-primary">Names</button></a>
     </div>
     <div>
       <span>{{greet}}</span>
     </div>
+    {{#if messages.error}}
+    <div class=" errorMessage">
+      <span href="/flash" name="flash">{{messages.error}}</span>
+    </div>
+    {{/if}}
   </div>
 </div>

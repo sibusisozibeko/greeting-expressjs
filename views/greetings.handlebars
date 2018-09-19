@@ -1,19 +1,26 @@
 <div class="row">
     <table>
+
         <thead>
             <th>Namesgreeted</th>
             {{!--
             <th>Message</th> --}}
         </thead>
         {{#each greeted}}
-        <tr>
-            <td> <a href="/greeted/{{username}}">{{username}}</a></td>
-            {{/each}}
+        <div>
+            <tr>
+                <td> <a href="/greeted/{{username}}">{{username}}</a></td>
+                {{/each}}
+            </tr>
             <tr>
                 {{message}}
             </tr>
-            <div class="button1 ">
-                <a href="/home"><button onclick="" class="Reseting button button-primary">BACK</button></a>
-            </div>
+        </div>
+
     </table>
+    <div class="button1 ">
+        <a href="/home"><button onclick="" class="Reseting button button-primary">BACK</button></a>
+        <a href="/reset"><button onclick="" class="Reseting button button-primary">Reset</button></a>
+    </div>
+
 </div>

@@ -1,13 +1,13 @@
 language: node_js
 
 env:
-     -DB=postgresql://postgres@localhost:5432/greeting_test
+     -DB=postgresql://postgres@localhost:5432/greet_test
 
  node_js:
        -   "8.9.4"
 before_script:
-        -psql -c 'create database greeting_test;' -U postgres
-         -psql -U postgres -d greeting_test -a -f greet.sql
+        -psql -c 'create database greet_test;' -U postgres
+         -psql -U postgres -d greet_test -a -f greet.sql
   addons:
     apt:
       packages:

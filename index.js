@@ -5,7 +5,7 @@ const NamesGreeted = require("./greet.js");
 const flash = require("express-flash");
 const session = require("express-session");
 const app = express();
-
+const routes = require("./routes");
 const pg = require("pg");
 const Pool = pg.Pool;
 
@@ -28,7 +28,7 @@ const pool = new Pool({
 });
 
 const Greet = NamesGreeted(pool);
-
+const greetingRoute = routes(Greet);
 let PORT = process.env.PORT || 9009;
 app.engine(
   "handlebars",
@@ -56,50 +56,17 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.get("/", async function(req, res) {
-  let count = await Greet.countNames();
-  await Greet.returnName();
-  await Greet.Greetfunctions("Sbu");
-  res.render("home", { count });
-});
+app.get("/", greetingRoute.homePage);
 
-app.post("/greetings", async function(req, res) {
-  let textarea = req.body.myTextarea;
-  let radio = req.body.radioz;
+app.post("/greetings", greetingRoute.greetcount);
 
-  if (textarea == "") {
-    req.flash("error", "please enter name!");
-  } else if (radio == undefined) {
-    req.flash("error", "please select a button!");
-  }
-  let greet = await Greet.greetedNames(radio, textarea);
-  let count = await Greet.countNames();
+app.get("/greeted", greetingRoute.showname);
 
-  res.render("home", {
-    greet: greet,
-    count: count
-  });
-});
+app.get("/reset", greetingRoute.clearcountandnames);
 
-app.get("/greeted", async function(req, res) {
-  let greeted = await Greet.returnName();
-  res.render("greetings", { greeted });
-});
+app.get("/greeted/:username", greetingRoute.returnmessagedb);
 
-app.get("/reset", async function(req, res) {
-  await Greet.clearBtn();
-  res.redirect("/");
-});
-
-app.get("/greeted/:username", async function(req, res) {
-  let greeted = await Greet.returnName();
-  let message = await Greet.Greetfunctions(req.params.username);
-  res.render("greetings", { greeted, message });
-});
-
-app.get("/home", async function(req, res) {
-  res.redirect("/");
-});
+app.get("/home", greetingRoute.returntohome);
 
 app.listen(PORT, function(err) {
   console.log("APP starting on port", PORT);

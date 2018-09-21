@@ -13,68 +13,63 @@ const pool = new Pool({
 
 let greeted = NamesGreeted(pool);
 
-describe("The namesGreeted function", function() {
+describe("The NamesGreeted function", function() {
+  it("must show that a person is greeted in IsiXhosa ", async function() {
+    var greeted = NamesGreeted(pool);
+    let greeting = await greeted.greetedNames("English", "Sbu");
+    assert.equal("Hello, Sbu", greeting);
+  });
+
   beforeEach(async function() {
     // clean the tables before each test run
     await pool.query("delete from greet;");
   });
 
-  it("must show that a person is greeted in IsiXhosa ", async function() {
-    //let greeted = NamesGreeted(pool);
-    let greeting = await greeted.greetedNames("IsiXhosa", "Lungi");
-    assert.equal(greeting, "Molo, Lungi");
+  it("must show that a person is greeted in English  ", async function() {
+    // var greeted = NamesGreeted(pool);
+    let greeting = await greeted.greetedNames("English", "Leon");
+    assert.equal(greeting, "Hello, Leon");
   });
 
-  //   beforeEach(async function() {
-  //     // clean the tables before each test run
-  //     await pool.query("delete from greet;");
-  //   });
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
 
-  //   it("must show that a person is greeted in English  ", async function() {
-  //     // var greeted = NamesGreeted(pool);
-  //     let greeting = await greeted.greetedNames("English", "Leon");
-  //     assert.equal(greeting, "Hello, Leon");
-  //   });
+  it("must show that a person is greeted in Afrikaans ", async function() {
+    // var greeted = NamesGreeted(pool);
+    let greeting = await greeted.greetedNames("Afrikaans", "Rochelle");
+    assert.equal(greeting, "Hallo, Rochelle");
+  });
 
-  //   beforeEach(async function() {
-  //     // clean the tables before each test run
-  //     await pool.query("delete from greet;");
-  //   });
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
 
-  //   it("must show that a person is greeted in Afrikaans ", async function() {
-  //     // var greeted = NamesGreeted(pool);
-  //     let greeting = await greeted.greetedNames("Afrikaans", "Rochelle");
-  //     assert.equal(greeting, "Hallo, Rochelle");
-  //   });
+  it("must count the number of names greeted and I expect three people to be greeted ", async function() {
+    // let greeting = await greeted.greetedNames();
+    await greeted.greetedNames("IsiXhosa", "Ace");
+    await greeted.greetedNames("IsiXhosa", "Lilo");
+    await greeted.greetedNames("IsiXhosa", "Vuyo");
 
-  //   beforeEach(async function() {
-  //     // clean the tables before each test run
-  //     await pool.query("delete from greet;");
-  //   });
+    assert.equal(3, await greeted.countNames());
+  });
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
 
-  //   it("must count the number of names greeted and I expect three people to be greeted ", async function() {
-  //     // let greeting = await greeted.greetedNames();
-  //     await greeted.greetedNames("IsiXhosa", "Ace");
-  //     await greeted.greetedNames("IsiXhosa", "Lilo");
-  //     await greeted.greetedNames("IsiXhosa", "Vuyo");
+  it("must count the number of names greeted and I expect three people to be greeted", async function() {
+    //var greeted = NamesGreeted(pool);
+    await greeted.greetedNames("English", "sbu");
+    await greeted.greetedNames("English", "lilo");
+    await greeted.greetedNames("English", "lilo");
+    await greeted.greetedNames("English", "lilo");
+    await greeted.greetedNames("English", "Mzwa");
 
-  //     assert.equal(3, await greeted.countNames());
-  //   });
-  //   beforeEach(async function() {
-  //     // clean the tables before each test run
-  //     await pool.query("delete from greet;");
-  //   });
-
-  //   it("must count the number of names greeted and I expect two people to be greeted", async function() {
-  //     //var greeted = NamesGreeted(pool);
-  //     await greeted.greetedNames("English", "sbu");
-  //     await greeted.greetedNames("English", "lilo");
-  //     await greeted.greetedNames("English", "lilo");
-  //     await greeted.greetedNames("English", "lilo");
-  //     await greeted.greetedNames("English", "Mzwa");
-
-  //     assert.equal(3, await greeted.countNames());
-  //   });
+    assert.equal(3, await greeted.countNames());
+  });
 
   after(function() {
     pool.end();

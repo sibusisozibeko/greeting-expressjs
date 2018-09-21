@@ -70,7 +70,6 @@ describe("The NamesGreeted function", function() {
 
     assert.equal(3, await greeted.countNames());
   });
-
   after(function() {
     pool.end();
   });

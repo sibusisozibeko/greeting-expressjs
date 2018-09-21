@@ -8,7 +8,6 @@ const app = express();
 const routes = require("./routes");
 const pg = require("pg");
 const Pool = pg.Pool;
-
 // initialise the flash middleware
 app.use(flash());
 // should we use a SSL connection

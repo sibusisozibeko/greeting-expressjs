@@ -5,7 +5,6 @@ module.exports = function NamesGreeted(pool) {
       let found = await pool.query("SELECT * FROM greet WHERE username=$1", [
         name
       ]);
-
       if (found.rowCount === 0) {
         //console.log("insert");
         await pool.query(

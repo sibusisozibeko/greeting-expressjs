@@ -1,7 +1,7 @@
 {
   "name": "greeting-expressjs",
   "version": "1.0.0",
-  "description": "[![Build Status](https://travis-ci.org/sibusisozibeko/greeting-expressjs.svg?branch=master)](https://travis-ci.org/sibusisozibeko/greeting-expressjs)",
+  "description": "",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -11,12 +11,12 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.15.6",
     "moment": "^2.22.2",
-    "nodemon": "^1.18.4",
     "pg": "^7.4.3",
     "pool": "^0.4.1"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4"
   },
   "scripts": {
     "test": "mocha"

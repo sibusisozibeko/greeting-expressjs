@@ -19,7 +19,8 @@
     "nodemon": "^1.18.4"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

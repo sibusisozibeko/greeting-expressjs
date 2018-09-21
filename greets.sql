@@ -1,4 +1,4 @@
--- DROP TABLE if exists greet cascade;
+-- DROP TABLE if exists greet;
 
 create table greet(
 	id serial not null primary key,

@@ -19,11 +19,9 @@ module.exports = function NamesGreeted(pool) {
         [name]
       );
       // }
-
       if (language === "IsiXhosa") {
         return "Molo, " + name;
       }
-
       if (language === "English") {
         return "Hello, " + name;
       }

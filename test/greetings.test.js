@@ -14,15 +14,15 @@ const pool = new Pool({
 let greeted = NamesGreeted(pool);
 
 describe("The NamesGreeted function", function() {
+  beforeEach(async function() {
+    // clean the tables before each test run
+    await pool.query("delete from greet;");
+  });
+
   it("must show that a person is greeted in IsiXhosa ", async function() {
     var greeted = NamesGreeted(pool);
     let greeting = await greeted.greetedNames("English", "Sbu");
     assert.equal("Hello, Sbu", greeting);
-  });
-
-  beforeEach(async function() {
-    // clean the tables before each test run
-    await pool.query("delete from greet;");
   });
 
   it("must show that a person is greeted in English  ", async function() {

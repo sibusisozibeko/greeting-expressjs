@@ -10,12 +10,14 @@ const pg = require("pg");
 const Pool = pg.Pool;
 // initialise the flash middleware
 app.use(flash());
+
 // should we use a SSL connection
 let useSSL = false;
 let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL) {
   useSSL = true;
 }
+
 // which db connection to use
 const connectionString =
   process.env.DATABASE_URL ||

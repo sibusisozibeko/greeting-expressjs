@@ -13,7 +13,7 @@ app.use(flash());
 // should we use a SSL connection
 let useSSL = false;
 let local = process.env.LOCAL || false;
-if (process.env.DATABASE_URL && !local) {
+if (process.env.DATABASE_URL) {
   useSSL = true;
 }
 // which db connection to use

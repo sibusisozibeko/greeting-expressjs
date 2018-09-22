@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js"
   },
   "dependencies": {
     "eslint": "^5.6.0",

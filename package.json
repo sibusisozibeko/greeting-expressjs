@@ -10,12 +10,12 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "body-parser": "^1.18.3",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
     "pg": "^7.4.3",
     "pool": "^0.4.1"
   },
   "devDependencies": {
-    "express-flash": "0.0.2",
-    "express-session": "^1.15.6",
     "nodemon": "^1.18.4"
   },
   "scripts": {

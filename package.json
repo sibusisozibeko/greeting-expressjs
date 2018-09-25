@@ -7,10 +7,15 @@
     "test": "test"
   },
   "dependencies": {
-    "express": "^4.16.3",
     "nodemon": "^1.18.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6"
+  },
   "scripts": {
     "test": "mocha",
     "start": "node index.js"

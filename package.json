@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "[![Build Status](https://travis-ci.org/sibusisozibeko/greeting-expressjs.svg?branch=master)](https://travis-ci.org/sibusisozibeko/greeting-expressjs)",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",

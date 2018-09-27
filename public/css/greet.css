@@ -34,13 +34,10 @@ Reseting {
   margin: 10px;
   /*align-items: center;*/
 }
-/* .Shownames {
-  width: 100px;
-  height: 30px;
-  background-color: green;
-  color: aliceblue;
-  margin: 10px;
-} */
+.myTextarea {
+  width: 200px;
+  height: 40px;
+}
 
 .textareas {
   padding-top: 20px;

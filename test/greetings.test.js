@@ -70,6 +70,14 @@ describe("The NamesGreeted function", function() {
 
     assert.equal(3, await greeted.countNames());
   });
+  it("It must show the username counter", async function() {
+    //var greeted = NamesGreeted(pool);
+    await greeted.greetedNames("English", "sbu");
+    await greeted.greetedNames("English", "sbu");
+    await greeted.greetedNames("English", "sbu");
+    let count = await greeted.usernamecounter("sbu");
+    assert.equal(3, count.greet_count);
+  });
   after(function() {
     pool.end();
   });

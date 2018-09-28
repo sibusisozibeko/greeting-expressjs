@@ -21,14 +21,14 @@ describe("The NamesGreeted function", function() {
 
   it("must show that a person is greeted in IsiXhosa ", async function() {
     var greeted = NamesGreeted(pool);
-    let greeting = await greeted.greetedNames("English", "Sbu");
-    assert.equal("Hello, Sbu", greeting);
+    let greeting = await greeted.greetedNames("English", "sbu");
+    assert.equal("Hello, SBU", greeting);
   });
 
   it("must show that a person is greeted in English  ", async function() {
     // var greeted = NamesGreeted(pool);
-    let greeting = await greeted.greetedNames("English", "Leon");
-    assert.equal("Hello, Leon", greeting);
+    let greeting = await greeted.greetedNames("English", "leon");
+    assert.equal("Hello, LEON", greeting);
   });
 
   // beforeEach(async function() {
@@ -39,7 +39,7 @@ describe("The NamesGreeted function", function() {
   it("must show that a person is greeted in Afrikaans ", async function() {
     // var greeted = NamesGreeted(pool);
     let greeting = await greeted.greetedNames("Afrikaans", "Rochelle");
-    assert.equal("Hallo, Rochelle", greeting);
+    assert.equal("Hallo, ROCHELLE", greeting);
   });
 
   // beforeEach(async function() {
@@ -72,10 +72,10 @@ describe("The NamesGreeted function", function() {
   });
   it("It must show the username counter", async function() {
     //var greeted = NamesGreeted(pool);
-    await greeted.greetedNames("English", "sbu");
-    await greeted.greetedNames("English", "sbu");
-    await greeted.greetedNames("English", "sbu");
-    let count = await greeted.usernamecounter("sbu");
+    await greeted.greetedNames("English", "SBU");
+    await greeted.greetedNames("English", "SBU");
+    await greeted.greetedNames("English", "SBU");
+    let count = await greeted.usernamecounter("SBU");
     assert.equal(3, count.greet_count);
   });
   after(function() {

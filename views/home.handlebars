@@ -1,44 +1,49 @@
 <div class="container">
   <h1>Greetings</h1>
 
-  <div class="row">
-    <div class="count "><span>counter: {{count}}</span></div>
-
-
-    <form class="" action="greetings" method="post">
-
-      <div class="textareas" name="">
-        <label>Name</label>
-        <input id="myTextarea" name="myTextarea" class="myTextarea"> </input>
-
+  <form class="" action="greetings" method="post">
+    <div class="row">
+      <div class="four columns">
+        <span>NAME:<input id="myTextarea" name="myTextarea" class="myTextarea"> </input></span>
       </div>
-      <!-- <div class="count">0</div> -->
-
-      <div class="radioz">
-        <input type="radio" class="radios" name="radioz" value="English" class="radioz" />
-        <label for="y">English</label>
-        <input type="radio" class="radios" name="radioz" value="Afrikaans" class="radioz" />
-        <label for="z">Afrikaans</label>
-        <input type="radio" class="radios" name="radioz" value="IsiXhosa" class="radioz" />
-        <label for="z">IsXhosa</label>
+      <div class="four columns">
+        <span>COUNTER:</span>
+        <span class="count"></span>{{count}}</span>
       </div>
-
-      <button type="submit" onclick="" class="btnGreet button button-primary">Greet</button>
-    </form>
-
-
-
-    <div class="button1">
-
-      <a href="/greeted"><button onclick="" class="Shownames button button-primary">Names</button></a>
     </div>
-    <div>
-      <span>{{greet}}</span>
+    <!-- <div class="count">0</div> -->
+
+    <div class="radioz">
+      <input type="radio" class="radios" name="radioz" value="English" class="radioz" />
+      <label for="y">English</label>
+      <input type="radio" class="radios" name="radioz" value="Afrikaans" class="radioz" />
+      <label for="z">Afrikaans</label>
+      <input type="radio" class="radios" name="radioz" value="IsiXhosa" class="radioz" />
+      <label for="z">IsXhosa</label>
     </div>
-    {{#if messages.error}}
-    <div class=" errorMessage">
-      <span href="/flash" name="flash">{{messages.error}}</span>
-    </div>
-    {{/if}}
+    <section class="">
+      <div class="row">
+        <div class="button1">
+          <div class="four columns">
+            <button type="submit" name="submit" class="btnGreet button button-primary">Greet</button>
+          </div>
+          <div class="four columns">
+
+            <a href="/greeted">
+              <button class="Reseting button button-primary" type="button">Names</button>
+            </a>
+          </div>
+        </div>
+      </div>
+  </form>
+  </section>
+  <div>
+    <span>{{greet}}</span>
   </div>
+  {{#if messages.error}}
+  <div class=" errorMessage">
+    <span href="/flash" name="flash">{{messages.error}}</span>
+  </div>
+  {{/if}}
+</div>
 </div>

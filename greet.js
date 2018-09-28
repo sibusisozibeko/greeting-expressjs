@@ -1,6 +1,8 @@
 module.exports = function NamesGreeted(pool) {
   //when the greet button is pressed check if this user was already greeted befo  //by looking if the userName exists in namesGreeted if not increment this counter and update the screen
   async function greetedNames(language, name) {
+    name = name.toUpperCase();
+
     if (name != "") {
       let found = await pool.query("SELECT * FROM greet WHERE username=$1", [
         name

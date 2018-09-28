@@ -1,26 +1,34 @@
 <div class="container">
     <div class="row">
+
         <table>
 
             <thead>
-                <th>Namesgreeted</th>
+                <th>Names Greeted</th>
                 {{!--
                 <th>Message</th> --}}
             </thead>
+
             {{#each greeted}}
+
             <div>
                 <tr>
                     <td> <a href="/greeted/{{username}}">{{username}}</a></td>
                     {{/each}}
                 </tr>
                 <tr>
-                    <span>Hello, {{message.username}} have been greeted {{message.greet_count}}, times</span>
+                    {{#if message.username}} Hello, {{message.username}} have been greeted {{message.greet_count}}, times; {{/if}}
                 </tr>
             </div>
+
         </table>
         <div class="button1 ">
-            <a href="/home"><button onclick="" class="Reseting button button-primary">BACK</button></a>
-            <a href="/reset"><button onclick="" class="Reseting button button-primary">Reset</button></a>
+            <div class="four columns">
+                <a href="/home"><button onclick="" class="Reseting button button-primary">BACK</button></a>
+            </div>
+            <div class="four columns">
+                <a href="/reset"><button onclick="" class="Reseting button button-primary">Reset</button></a>
+            </div>
         </div>
     </div>
 </div>

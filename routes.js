@@ -18,7 +18,7 @@ module.exports = function(greetedNames) {
       let radio = req.body.radioz;
 
       if (textarea === "") {
-        req.flash("error", "please enter name!");
+        req.flash("error", "please enter name on the !");
       } else if (radio == undefined) {
         req.flash("error", "please select a button!");
       }

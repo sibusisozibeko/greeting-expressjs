@@ -5,7 +5,14 @@ module.exports = function(greetedNames) {
       let count = await greetedNames.countNames();
       await greetedNames.returnName();
       await greetedNames.usernamecounter();
-      res.render("home", { count });
+      let textarea = req.body.myTextarea;
+      if (textarea === "") {
+        // return res.redirect("/");
+      }
+      res.render("home", {
+        count,
+        textarea
+      });
     } catch (error) {
       next(error.stack);
     }
@@ -22,10 +29,11 @@ module.exports = function(greetedNames) {
       }
       if (radio == undefined) {
         req.flash("error", "please select a language");
+        return res.redirect("/");
       }
 
       let greet = await greetedNames.greetedNames(radio, textarea);
-      console.log(await greetedNames.countNames());
+      //console.log(await greetedNames.countNames());
       let count = await greetedNames.countNames();
 
       res.render("home", {

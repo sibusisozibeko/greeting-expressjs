@@ -18,10 +18,12 @@ module.exports = function(greetedNames) {
       let radio = req.body.radioz;
 
       if (textarea === "") {
-        req.flash("error", "please enter name on the !");
-      } else if (radio == undefined) {
-        req.flash("error", "please select a button!");
+        req.flash("error", "please enter name ");
       }
+      if (radio == undefined) {
+        req.flash("error", "please select a language");
+      }
+
       let greet = await greetedNames.greetedNames(radio, textarea);
       console.log(await greetedNames.countNames());
       let count = await greetedNames.countNames();
